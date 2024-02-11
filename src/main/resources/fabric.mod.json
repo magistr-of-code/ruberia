@@ -3,20 +3,23 @@
 	"id": "ruberia",
 	"version": "${version}",
 	"name": "Ruberia",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Mod made by maxmag_change aka magistr",
 	"authors": [
-		"Me!"
+		"maxmag_change aka magistr"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
+		"homepage": "https://github.com/magistr-of-code/ruberia",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/ruberia/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			"com.mds.ruberia.Ruberia"
+		],
+		"client": [
+			"com.mds.ruberia.RuberiaClient"
 		],
 		"fabric-datagen": [
 			"com.mds.ruberia.RuberiaDataGenerator"
