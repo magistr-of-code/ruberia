@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "ruberia",
+	"version": "${version}",
+	"name": "Ruberia",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/ruberia/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.mds.ruberia.Ruberia"
+		],
+		"fabric-datagen": [
+			"com.mds.ruberia.RuberiaDataGenerator"
+		]
+	},
+	"mixins": [
+		"ruberia.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.6",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
