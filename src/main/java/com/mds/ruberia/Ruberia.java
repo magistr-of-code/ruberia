@@ -1,5 +1,6 @@
 package com.mds.ruberia;
 
+import com.mds.ruberia.block.ModBlocks;
 import com.mds.ruberia.item.ModItemGroups;
 import com.mds.ruberia.item.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -16,6 +17,7 @@ public class Ruberia implements ModInitializer {
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
 
 		LOGGER.info("Hello Fabric world!");
 	}
