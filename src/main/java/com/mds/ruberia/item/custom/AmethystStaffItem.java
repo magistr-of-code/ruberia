@@ -1,32 +1,19 @@
 package com.mds.ruberia.item.custom;
 
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LightningEntity;
-import net.minecraft.entity.LivingEntity;
+import com.mds.ruberia.effects.ModEffects;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-import java.util.List;
 import java.util.Objects;
-import java.util.random.RandomGenerator;
-
-import static net.minecraft.entity.EntityType.PLAYER;
 
 public class AmethystStaffItem extends Item {
     public AmethystStaffItem(Settings settings) {
@@ -36,92 +23,30 @@ public class AmethystStaffItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
-        LightningEntity entity = new LightningEntity(EntityType.LIGHTNING_BOLT,world);
+        Vec3d userPos = user.getPos();
 
-        if(user.isSneaking()){
+        if(user.isSneaking() && !user.isOnGround()) {
+            Vec3d raycastPos = user.raycast(10,2.0f,false).getPos();
 
-            Vec3d ray = user.raycast(20,2.0f,false).getPos();
-
-            user.getItemCooldownManager().set(this, 80);
-
-            int posY = (int) ray.getY();
-            while(world.getBlockState(new BlockPos((int) ray.getX(),posY, (int) ray.getZ())) == Blocks.AIR.getDefaultState()) {
-                posY-=1;
-            }
-            world.createExplosion(null,ray.getX(),posY,ray.getZ(),4.0f, World.ExplosionSourceType.NONE);
-            entity.setPosition(ray.getX(),posY,ray.getZ());
-            world.spawnEntity(entity);
-        }
-
-        if(!user.isOnGround() && !user.isSneaking()){
-
-            Vec3d ray = user.raycast(20,2.0f,false).getPos();
-
-            user.addVelocity((ray.getX()-user.getX())/5,(ray.getY()-user.getY())/5,(ray.getZ()-user.getZ())/5);
-
-            user.getItemCooldownManager().set(this, 10);
+            double velX = (raycastPos.getX()-userPos.getX())/7;
+            double velY = (raycastPos.getY()-userPos.getY())/7;
+            double velZ = (raycastPos.getZ()-userPos.getZ())/7;
 
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 20, 6));
-            for(int i = 0; i != 200;i++){
-                world.addParticle(ParticleTypes.CLOUD,ray.getX(),ray.getY()-1,ray.getZ(), RandomGenerator.getDefault().nextDouble(-1,1),RandomGenerator.getDefault().nextDouble(-0.5,0.5),RandomGenerator.getDefault().nextDouble(-1,1));
-            }
+            user.addVelocity(velX,velY,velZ);
+            ModEffects.Path(user,world,user.getPos(),ParticleTypes.CLOUD,0,0,0,1,10,25);
+            ModEffects.Path(user,world,user.getPos(),ParticleTypes.CAMPFIRE_COSY_SMOKE,0,0,0,1,10,25);
+
+            Objects.requireNonNull(user).getItemCooldownManager().set(this, 30);
+
         }
 
-        world.playSound(null,user.getBlockPos(),SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK,SoundCategory.AMBIENT,1f,2f);
+        if (user.isSneaking() && user.isOnGround()) {
+            Objects.requireNonNull(user).getItemCooldownManager().set(this, 50);
+            ModEffects.ShockWave(world,user,4);
+            ModEffects.CircleGoingOutwards(world,user.getPos(),ParticleTypes.END_ROD,0,0,0,1,0.75);
+        }
+
         return super.use(world, user, hand);
     }
-
-
-    @Override
-    public ActionResult useOnBlock(ItemUsageContext context) {
-
-        Objects.requireNonNull(context.getPlayer()).getItemCooldownManager().set(this, 50);
-
-        Vec3d pos = context.getPlayer().getPos();
-
-        PlayerEntity user = context.getPlayer();
-
-        Vec3d ray = user.raycast(20.0f,1,false).getPos();
-
-        List<Entity> Entities = context.getWorld().getOtherEntities(user,new Box(pos.getX()-4,pos.getY()-4,pos.getZ()-4,pos.getX()+4,pos.getY()+4,pos.getZ()+4));
-
-        for (int i = 0; i != Entities.toArray().length; i++) {
-
-            Entities.get(i).addVelocity((ray.getX()-user.getX())/5,(ray.getY()-user.getY())/5,(ray.getZ()-user.getZ())/5);
-
-        }
-
-        return super.useOnBlock(context);
-    }
-
-
-
-    @Override
-    public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
-
-        user.getItemCooldownManager().set(this, 40);
-
-        Vec3d ray = user.raycast(15,2.0f,false).getPos();
-
-        for(int i = 0; i != 200;i++){
-            user.getWorld().addParticle(ParticleTypes.END_ROD,ray.getX(),ray.getY(),ray.getZ(), RandomGenerator.getDefault().nextDouble(-2,2),RandomGenerator.getDefault().nextDouble(-2,2),RandomGenerator.getDefault().nextDouble(-2,2));
-        }
-
-        entity.addVelocity((ray.getX()-user.getX())/2,(ray.getY()-user.getY())/2,(ray.getZ()-user.getZ())/2);
-        entity.damage(user.getDamageSources().magic(),5.0f);
-
-        return super.useOnEntity(stack, user, entity, hand);
-    }
-
-    @Override
-    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        Vec3d pos = target.getPos();
-
-        target.addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 15, 6));
-
-        return super.postHit(stack, target, attacker);
-    }
-
-
-
 }
