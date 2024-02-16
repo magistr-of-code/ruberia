@@ -6,7 +6,6 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -23,9 +22,12 @@ public class AmethystStaffItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
+
+
         Vec3d userPos = user.getPos();
 
         if(user.isSneaking() && !user.isOnGround()) {
+
             Vec3d raycastPos = user.raycast(10,2.0f,false).getPos();
 
             double velX = (raycastPos.getX()-userPos.getX())/7;
@@ -34,7 +36,6 @@ public class AmethystStaffItem extends Item {
 
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 20, 6));
             user.addVelocity(velX,velY,velZ);
-            ModEffects.Path(user,world,user.getPos(),ParticleTypes.CLOUD,0,0,0,1,10,25);
             ModEffects.Path(user,world,user.getPos(),ParticleTypes.CAMPFIRE_COSY_SMOKE,0,0,0,1,10,25);
 
             Objects.requireNonNull(user).getItemCooldownManager().set(this, 30);
@@ -44,7 +45,6 @@ public class AmethystStaffItem extends Item {
         if (user.isSneaking() && user.isOnGround()) {
             Objects.requireNonNull(user).getItemCooldownManager().set(this, 50);
             ModEffects.ShockWave(world,user,4);
-            ModEffects.CircleGoingOutwards(world,user.getPos(),ParticleTypes.END_ROD,0,0,0,1,0.75);
         }
 
         return super.use(world, user, hand);
