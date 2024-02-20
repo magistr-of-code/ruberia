@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "ruberia:barrier_generator"
+    },
+    {
+      "item": "ruberia:barrier_generator"
+    },
+    {
+      "item": "ruberia:barrier_generator"
+    },
+    {
+      "item": "ruberia:barrier_generator"
+    },
+    {
+      "item": "ruberia:barrier_generator"
+    },
+    {
+      "item": "ruberia:barrier_generator"
+    },
+    {
+      "item": "ruberia:barrier_generator"
+    },
+    {
+      "item": "ruberia:barrier_generator"
+    },
+    {
+      "item": "ruberia:barrier_generator"
+    }
+  ],
+  "result": {
+    "item": "ruberia:barrier_crystal"
+  }
+}

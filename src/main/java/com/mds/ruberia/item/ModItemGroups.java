@@ -27,6 +27,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.RUNE_BLOCK);
                         entries.add(ModBlocks.PURPLE_CRYSTAL);
                         entries.add(ModItems.AMETHYST_STAFF);
+                        entries.add(ModBlocks.BARRIER_GENERATOR);
+                        entries.add(ModItems.BARRIER_CRYSTAL);
                     }).build());
 
     public static void registerItemGroups(){

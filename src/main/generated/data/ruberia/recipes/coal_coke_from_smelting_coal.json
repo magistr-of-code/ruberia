@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "ingredients",
+  "ingredient": {
+    "item": "minecraft:coal"
+  },
+  "result": "ruberia:coal_coke"
+}

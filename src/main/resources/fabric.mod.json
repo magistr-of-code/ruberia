@@ -20,6 +20,9 @@
 		],
 		"client": [
 			"com.mds.ruberia.RuberiaClient"
+		],
+		"fabric-datagen": [
+			"com.mds.ruberia.RuberiaDataGenerator"
 		]
 	},
 	"mixins": [

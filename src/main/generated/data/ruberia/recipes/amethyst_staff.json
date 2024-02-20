@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "$": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "C": {
+      "item": "ruberia:purple_crystal"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  $",
+    " C ",
+    "S  "
+  ],
+  "result": {
+    "item": "ruberia:amethyst_staff"
+  },
+  "show_notification": true
+}

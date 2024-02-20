@@ -1,0 +1,16 @@
+// 1.20.1	2024-02-20T12:07:06.8240089	Ruberia/Model Definitions
+52efa9a3229b9b5d57edd851fb8d7a985bebbd07 assets\ruberia\models\block\barrier_generator.json
+f89f14400b4387eb9d16bf232560b0e9d2bfee67 assets\ruberia\models\item\purple_crystal.json
+ddd096db7558704f455112cb2c7538ee72a56bf3 assets\ruberia\models\item\coal_coke.json
+cac431bd3c03cacbe8a1ef0729884a9d15943ef2 assets\ruberia\models\block\rune_block.json
+b73ed2407c69ab017b3bd9a3943156c4bbece818 assets\ruberia\models\block\flarium_block.json
+89b01f713d2c0a4594c7080d6add6af561c97037 assets\ruberia\models\item\flarium_ingot.json
+d2d33a4da0b21a3f1909875e6a2845550593a894 assets\ruberia\blockstates\flarium_block.json
+38a40f687dc11dad3518bcc0dbe23c53ed10dd72 assets\ruberia\models\item\flarium_block.json
+1aeb8bbfeb33215f9708c50a78dddbb99d032199 assets\ruberia\blockstates\barrier_generator.json
+e433042d27fe130cd45e76cfe13a5d1d6dd4cfe2 assets\ruberia\models\item\barrier_crystal.json
+9fab638b49890858bc77514b041e72bee30f0dea assets\ruberia\models\item\barrier_generator.json
+c441d21b6ba1fe1cd3d1b620fa4cdf8b08ab5569 assets\ruberia\blockstates\purple_crystal.json
+74c77b320ee271bc2b0614c2c17063209edd6ced assets\ruberia\models\block\purple_crystal.json
+91c567e5b202f141ab0e222cf5743d9211e5c1f6 assets\ruberia\blockstates\rune_block.json
+4d2baef426bf717436c6185b339d18d596b66c1f assets\ruberia\models\item\rune_block.json

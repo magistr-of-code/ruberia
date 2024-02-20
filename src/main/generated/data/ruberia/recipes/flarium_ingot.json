@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "ruberia:flarium_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "ruberia:flarium_ingot"
+  }
+}

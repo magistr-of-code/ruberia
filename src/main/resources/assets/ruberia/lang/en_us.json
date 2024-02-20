@@ -1,11 +1,17 @@
 {
   "item.ruberia.flarium_ingot": "Flarium Ingot",
   "item.ruberia.amethyst_staff": "Amethyst Staff",
+  "item.ruberia.barrier_crystal": "Barrier Crystal",
 
   "block.ruberia.flarium_block": "Block of Flarium",
   "block.ruberia.rune_block": "Rune",
   "block.ruberia.purple_crystal": "Purple Crystal",
+  "block.ruberia.barrier_generator": "Barrier Generator",
 
   "itemgroup.flarium": "Flarium",
-  "itemgroup.magic": "Magic"
+  "itemgroup.magic": "Magic",
+
+  "effect.ruberia.ghost": "Ghost",
+
+  "tooltip.ruberia.amethyst_staff": "A magical staff crafted from a mystical wood, with a magical crystal at the tip, grants the ability to manipulate the world’s elements."
 }

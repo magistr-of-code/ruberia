@@ -1,6 +1,7 @@
 package com.mds.ruberia.block;
 
 import com.mds.ruberia.Ruberia;
+import com.mds.ruberia.block.custom.BarrierGenerator;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -23,6 +24,9 @@ public class ModBlocks {
 
     public static final Block RUNE_BLOCK = registerBlock("rune_block",
             new Block(FabricBlockSettings.create().requiresTool().luminance(8).strength(5.0f, 8.0f).sounds(BlockSoundGroup.STONE).instrument(Instrument.CHIME)));
+
+    public static final Block BARRIER_GENERATOR = registerBlock("barrier_generator",
+            new BarrierGenerator(FabricBlockSettings.copyOf(Blocks.GLASS).strength(3).hardness(3).luminance(15).nonOpaque()));
 
     private static Block registerBlock(String name, Block block){
         registerBlockItem(name,block);
