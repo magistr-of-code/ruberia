@@ -14,6 +14,6 @@ public class ModEntities {
     public static final EntityType<CrystalSpear> CRYSTAL_SPEAR_ENTITY = Registry.register(
             Registries.ENTITY_TYPE,
             new Identifier(Ruberia.MOD_ID, "crystal_spear"),
-            FabricEntityTypeBuilder.<CrystalSpear>create(SpawnGroup.MISC, CrystalSpear::new).dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(4).trackedUpdateRate(10).build()
+            FabricEntityTypeBuilder.<CrystalSpear>create(SpawnGroup.MISC, CrystalSpear::new).dimensions(EntityDimensions.fixed(0.5F, 0.5F)).trackRangeBlocks(4).trackedUpdateRate(10).build()
     );
 }

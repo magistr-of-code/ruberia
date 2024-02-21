@@ -1,7 +1,6 @@
 package com.mds.ruberia.entity;
 
 import com.mds.ruberia.effects.ModEffects;
-import com.mds.ruberia.item.ModItems;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
@@ -9,13 +8,27 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
+import java.util.List;
+import java.util.Objects;
+
 public class CrystalSpear extends ThrownItemEntity {
+
+    @Override
+    public void tick() {
+
+        this.getWorld().addParticle(ParticleTypes.END_ROD,this.getPos().getX(),this.getPos().getY(),this.getPos().getZ(),0,0,0);
+
+        super.tick();
+    }
+
     public CrystalSpear(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -30,7 +43,7 @@ public class CrystalSpear extends ThrownItemEntity {
 
     @Override
     protected Item getDefaultItem() {
-        return ModItems.AMETHYST_STAFF;
+        return Items.AMETHYST_SHARD;
     }
 
 
@@ -38,14 +51,12 @@ public class CrystalSpear extends ThrownItemEntity {
     @Environment(EnvType.CLIENT)
     public void handleStatus(byte status) {
 
-        ModEffects.ShockWave(this.getWorld(),this.getPos().add(0,1,0),8,null);
     }
 
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         Entity entity = entityHitResult.getEntity();
 
-        entity.getWorld().playSound(entity.getPos().getX(),entity.getPos().getY(),entity.getPos().getZ(), SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK, SoundCategory.AMBIENT, 2F, 1F,true);
         entity.damage(entity.getDamageSources().magic(),5f);
 
         if (entity instanceof LivingEntity livingEntity) {
@@ -55,12 +66,21 @@ public class CrystalSpear extends ThrownItemEntity {
 
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
-        if (!this.getWorld().isClient) {
 
-            this.getWorld().playSound(this.getPos().getX(),this.getPos().getY(),this.getPos().getZ(), SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK, SoundCategory.AMBIENT, 2F, 1F,true);
+        List<Entity> exceptions = List.of(Objects.requireNonNull(this.getOwner()),this);
+
+        ModEffects.ShockWave(this.getWorld(),this.getPos(),8,exceptions);
+
+        if (!this.getWorld().isClient) {
+            this.getWorld().playSound(this.getPos().getX(),this.getPos().getY(),this.getPos().getZ(), SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK, SoundCategory.AMBIENT, 2F, 1F,false);
             this.getWorld().sendEntityStatus(this, (byte)3);
             this.kill();
         }
 
+    }
+
+    @Override
+    protected float getGravity() {
+        return 0.08f;
     }
 }

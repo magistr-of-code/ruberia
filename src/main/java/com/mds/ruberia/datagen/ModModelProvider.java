@@ -26,6 +26,5 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.COAL_COKE, Models.GENERATED);
         itemModelGenerator.register(ModItems.FLARIUM_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.BARRIER_CRYSTAL, Models.GENERATED);
-        itemModelGenerator.register(ModItems.AMETHYST_STAFF, Models.HANDHELD_ROD);
     }
 }

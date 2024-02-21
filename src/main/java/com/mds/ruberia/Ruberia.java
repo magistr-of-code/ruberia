@@ -4,6 +4,7 @@ import com.mds.ruberia.block.ModBlocks;
 import com.mds.ruberia.effects.ModStatusEffects;
 import com.mds.ruberia.item.ModItemGroups;
 import com.mds.ruberia.item.ModItems;
+import com.mds.ruberia.networking.ModMessages;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,8 @@ public class Ruberia implements ModInitializer {
 		ModBlocks.registerModBlocks();
 
 		ModStatusEffects.registerModStatusEffects();
+
+		ModMessages.registerC2SPackets();
 
 		LOGGER.info("Hello Fabric world!");
 	}

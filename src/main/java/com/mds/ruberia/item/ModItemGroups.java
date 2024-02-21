@@ -18,6 +18,7 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModItems.FLARIUM_INGOT)).entries((displayContext, entries) -> {
                         entries.add(ModItems.FLARIUM_INGOT);
                         entries.add(ModBlocks.FLARIUM_BLOCK);
+                        entries.add(ModItems.FLARIUM_NECKLACE);
                     }).build());
 
     public static final ItemGroup MAGIC_GROUP = Registry.register(Registries.ITEM_GROUP,
@@ -29,6 +30,7 @@ public class ModItemGroups {
                         entries.add(ModItems.AMETHYST_STAFF);
                         entries.add(ModBlocks.BARRIER_GENERATOR);
                         entries.add(ModItems.BARRIER_CRYSTAL);
+                        entries.add(ModItems.BARRIER_NECKLACE);
                     }).build());
 
     public static void registerItemGroups(){
