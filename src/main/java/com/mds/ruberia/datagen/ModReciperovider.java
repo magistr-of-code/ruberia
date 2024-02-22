@@ -40,5 +40,14 @@ public class ModReciperovider extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.PURPLE_CRYSTAL),conditionsFromItem(ModBlocks.PURPLE_CRYSTAL))
                 .criterion(hasItem(Items.AMETHYST_SHARD),conditionsFromItem(Items.AMETHYST_SHARD))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.AMETHYST_STAFF)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,ModItems.BARRIER_NECKLACE,1)
+                .pattern(" S ")
+                .pattern("S S")
+                .pattern(" C ")
+                .input('S', Items.STRING)
+                .input('C', ModItems.BARRIER_CRYSTAL)
+                .criterion(hasItem(ModItems.BARRIER_CRYSTAL),conditionsFromItem(ModItems.BARRIER_CRYSTAL))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.BARRIER_NECKLACE)));
     }
 }

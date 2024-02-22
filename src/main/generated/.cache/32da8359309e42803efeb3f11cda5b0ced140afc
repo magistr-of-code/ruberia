@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-20T23:12:49.0878622	Ruberia/Recipes
+// 1.20.1	2024-02-22T15:57:51.636652	Ruberia/Recipes
 a89849e5a7169676a1b49bc9e6d7842dc0bb9d99 data\ruberia\recipes\barrier_crystal.json
 15f395296423856a1f3e0474cab720d66ed636d7 data\ruberia\advancements\recipes\misc\coal_coke_from_blasting_coal.json
 5c609bcb434e2890ad0460ec8a71ade7a3ead490 data\ruberia\advancements\recipes\misc\amethyst_staff.json
@@ -6,8 +6,10 @@ e4b4756a4ddd5085d531da1f0dc5b48dddb05f8c data\ruberia\advancements\recipes\misc\
 f8a0ac2277195cf357e978c9bc7c0d16d3ed74c8 data\ruberia\recipes\coal_coke_from_smelting_coal.json
 1011d7f5cd6fa2a51b522fde33580e11bc5c1457 data\ruberia\advancements\recipes\decorations\flarium_block.json
 0650cae627466c3be17748814938152dca665ef9 data\ruberia\recipes\coal_coke_from_blasting_coal.json
-c6c893cfde2cddb112859cdf50c1bae7896f9fc4 data\ruberia\recipes\amethyst_staff.json
 58138216d1591f206b0a322487c12db4f6747047 data\ruberia\advancements\recipes\building_blocks\barrier_crystal.json
+c6c893cfde2cddb112859cdf50c1bae7896f9fc4 data\ruberia\recipes\amethyst_staff.json
+c6aef3743e83fcd226fa67743e5aa2c29ef83080 data\ruberia\recipes\barrier_necklace.json
 c063b4ff2999ba0dafc9031fbc3c99672c1d4f56 data\ruberia\recipes\flarium_block.json
 e9a06d3539322ddd0a4e22f53ee79c79aad7cc40 data\ruberia\advancements\recipes\building_blocks\flarium_ingot.json
 75c21c2f89bc4983017154ccf0168572e0e41202 data\ruberia\recipes\flarium_ingot.json
+6a73f7921e77308230f8c76e5ee8beda6683b7fe data\ruberia\advancements\recipes\misc\barrier_necklace.json

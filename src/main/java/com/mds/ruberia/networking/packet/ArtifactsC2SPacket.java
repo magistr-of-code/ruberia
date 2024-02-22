@@ -8,6 +8,7 @@ import dev.emi.trinkets.api.TrinketsApi;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.item.Item;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -21,11 +22,17 @@ public class ArtifactsC2SPacket {
 
         Optional< TrinketComponent > trinketComponent = TrinketsApi.getTrinketComponent(player);
         for(int i = 0; i != trinketComponent.get().getAllEquipped().size();i++) {
-            if( trinketComponent.get().getAllEquipped().get(i).getRight().getItem() == ModItems.BARRIER_NECKLACE){
-                System.out.println("success");
-                ModEffects.ShockWave(player.getWorld(),player.getPos(),8, List.of(player));
-                ServerPlayNetworking.send(player, ModMessages.ARTIFACT_CLIENT_ID,PacketByteBufs.create().writeString("barrier_necklace"));
+
+            Item item = trinketComponent.get().getAllEquipped().get(i).getRight().getItem();
+
+            if(item == ModItems.BARRIER_NECKLACE){
+                if (player.getItemCooldownManager().isCoolingDown(item)){
+                    ServerPlayNetworking.send(player, ModMessages.ARTIFACT_CLIENT_ID, PacketByteBufs.create().writeString("barrier_necklace_fail"));
+                } else {
+                    ModEffects.ShockWave(player.getWorld(),player.getPos(),8, List.of(player));
+                    ServerPlayNetworking.send(player, ModMessages.ARTIFACT_CLIENT_ID, PacketByteBufs.create().writeString("barrier_necklace_success"));
+                }
             }
         }
     }
-}
+}  

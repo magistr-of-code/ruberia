@@ -4,11 +4,9 @@ import com.google.common.collect.Multimap;
 import com.mds.ruberia.effects.ModEffects;
 import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.TrinketItem;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
 import java.util.List;
@@ -27,31 +25,11 @@ public class BarrierNecklace extends TrinketItem {
     }
 
     @Override
-    public void tick(ItemStack stack, SlotReference slot, LivingEntity entity) {
-
-        if (entity.isPlayer()&&slot.index()==0){
-            PlayerEntity player = (PlayerEntity) entity;
-            if (player.isTouchingWater() || player.getWorld().getBlockState(player.getBlockPos().down())==Blocks.WATER.getDefaultState()){
-                player.setNoGravity(true);
-            } else if (player.hasNoGravity()){
-                player.setNoGravity(false);
-            }
-        }
-
-        super.tick(stack, slot, entity);
-    }
-
-    @Override
     public void onUnequip(ItemStack stack, SlotReference slot, LivingEntity entity) {
 
-        if (entity.isPlayer()){
-            PlayerEntity player = (PlayerEntity) entity;
-            if (player.hasNoGravity()){
-                player.setNoGravity(false);
-            }
-        }
-
         entity.damage(entity.getDamageSources().magic(),2f);
+
+
 
         super.onUnequip(stack, slot, entity);
     }

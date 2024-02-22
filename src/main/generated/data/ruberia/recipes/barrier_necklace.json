@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "ruberia:barrier_crystal"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " S ",
+    "S S",
+    " C "
+  ],
+  "result": {
+    "item": "ruberia:barrier_necklace"
+  },
+  "show_notification": true
+}
