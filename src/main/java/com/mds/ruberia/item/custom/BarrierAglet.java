@@ -59,7 +59,7 @@ public class BarrierAglet extends TrinketItem {
     @Override
     public void onEquip(ItemStack stack, SlotReference slot, LivingEntity entity) {
 
-        ModEffects.ShockWave(entity.getWorld(),entity.getPos(),6, List.of(entity));
+        ModEffects.ShockWave(entity.getWorld(),entity.getPos(),3, List.of(entity));
 
         super.onEquip(stack, slot, entity);
     }

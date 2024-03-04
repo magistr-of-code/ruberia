@@ -7,6 +7,7 @@
 	],
 	"client": [
 		"ItemRendererAccessor",
+		"GameRendererAccessor",
 		"ItemRendererMixin",
 		"ModelLoaderMixin",
 		"ModEntityDataSaverMixin"

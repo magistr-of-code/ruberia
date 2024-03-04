@@ -99,6 +99,18 @@ public class AmethystStaffItem extends Item implements Vanishable {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+
+       // user.tiltScreen(RandomGenerator.getDefault().nextDouble(-3,3),RandomGenerator.getDefault().nextDouble(-3,3));
+
+        //Entity camera = Objects.requireNonNull(MinecraftClient.getInstance().getCameraEntity());
+
+        //camera.detach();
+
+        //camera.setPosition(user.getPos().addRandom(world.getRandom(),2));
+
+
+
+
         ItemStack itemStack = user.getStackInHand(hand);
         user.setCurrentHand(hand);
         return TypedActionResult.success(itemStack);

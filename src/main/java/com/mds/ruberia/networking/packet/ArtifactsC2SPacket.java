@@ -26,12 +26,8 @@ public class ArtifactsC2SPacket {
             Item item = trinketComponent.get().getAllEquipped().get(i).getRight().getItem();
 
             if(item == ModItems.BARRIER_NECKLACE){
-                if (player.getItemCooldownManager().isCoolingDown(item)){
-                    ServerPlayNetworking.send(player, ModMessages.ARTIFACT_CLIENT_ID, PacketByteBufs.create().writeString("barrier_necklace_fail"));
-                } else {
                     ModEffects.ShockWave(player.getWorld(),player.getPos(),8, List.of(player));
                     ServerPlayNetworking.send(player, ModMessages.ARTIFACT_CLIENT_ID, PacketByteBufs.create().writeString("barrier_necklace_success"));
-                }
             }
         }
     }

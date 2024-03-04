@@ -29,8 +29,6 @@ public class BarrierNecklace extends TrinketItem {
 
         entity.damage(entity.getDamageSources().magic(),2f);
 
-
-
         super.onUnequip(stack, slot, entity);
     }
 

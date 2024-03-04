@@ -20,9 +20,6 @@ public class ArtifactsS2CPacket {
                 player.getWorld().playSound(player.getX(),player.getY(),player.getZ(), SoundEvents.BLOCK_AMETHYST_BLOCK_RESONATE, SoundCategory.AMBIENT,2f,1f,false);
                 ModEffects.ShockWave(player.getWorld(),player.getPos(),8, List.of(player));
             }
-            if (buf.readString().equals("barrier_necklace_fail")){
-                player.getWorld().playSound(player.getX(),player.getY(),player.getZ(), SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK, SoundCategory.AMBIENT,2f,1f,false);
-            }
         }
     }
 }
