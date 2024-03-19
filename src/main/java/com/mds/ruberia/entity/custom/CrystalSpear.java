@@ -1,6 +1,8 @@
-package com.mds.ruberia.entity;
+package com.mds.ruberia.entity.custom;
 
 import com.mds.ruberia.effects.ModEffects;
+import com.mds.ruberia.entity.ModEntities;
+import com.mds.ruberia.item.ModItems;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
@@ -8,7 +10,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -51,7 +52,7 @@ public class CrystalSpear extends ThrownItemEntity {
 
     @Override
     protected Item getDefaultItem() {
-        return Items.AMETHYST_SHARD;
+        return ModItems.BARRIER_CRYSTAL;
     }
 
 

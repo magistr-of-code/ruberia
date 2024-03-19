@@ -16,9 +16,12 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(ItemRenderer.class)
 public abstract class ItemRendererMixin {
     @ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
-    public BakedModel useAmethystStaffModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    public BakedModel useCustomModels(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         if (stack.isOf(ModItems.AMETHYST_STAFF) && renderMode != ModelTransformationMode.GUI) {
             return ((ItemRendererAccessor) this).mccource$getModels().getModelManager().getModel(new ModelIdentifier(Ruberia.MOD_ID, "amethyst_staff_3d", "inventory"));
+        }
+        if (stack.isOf(ModItems.SPELL_BOOK) && renderMode != ModelTransformationMode.GUI) {
+            return ((ItemRendererAccessor) this).mccource$getModels().getModelManager().getModel(new ModelIdentifier(Ruberia.MOD_ID, "spell_book_3d", "inventory"));
         }
         return value;
     }

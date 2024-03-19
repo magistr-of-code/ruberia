@@ -19,6 +19,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RUNE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FLARIUM_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PURPLE_CRYSTAL);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.WRITING_DESK);
     }
 
     @Override
@@ -28,6 +29,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.BARRIER_CRYSTAL, Models.GENERATED);
         itemModelGenerator.register(ModItems.BARRIER_NECKLACE, Models.GENERATED);
         itemModelGenerator.register(ModItems.FLARIUM_NECKLACE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SPELL_BOOK,Models.GENERATED);
 
     }
 }

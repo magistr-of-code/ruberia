@@ -1,6 +1,7 @@
 package com.mds.ruberia.entity;
 
 import com.mds.ruberia.Ruberia;
+import com.mds.ruberia.entity.custom.CrystalSpear;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;

@@ -1,0 +1,39 @@
+
+public static final Animation IDLE = Animation.Builder.create(2f).looping()
+.addBoneAnimation("rune",
+	new Transformation(Transformation.Targets.ROTATE,
+		new Keyframe(0f, AnimationHelper.createRotationalVector(0f, 0f, 0f),
+			Transformation.Interpolations.LINEAR),
+		new Keyframe(2f, AnimationHelper.createRotationalVector(0f, 360f, 0f),
+			Transformation.Interpolations.LINEAR))).build();
+public static final Animation SPAWN = Animation.Builder.create(2f)
+.addBoneAnimation("rune",
+	new Transformation(Transformation.Targets.TRANSLATE, 
+		new Keyframe(0f, AnimationHelper.createTranslationalVector(0f, 0f, 0f),
+			Transformation.Interpolations.LINEAR), 
+		new Keyframe(2f, AnimationHelper.createTranslationalVector(0f, 0f, 0f),
+			Transformation.Interpolations.LINEAR)))
+.addBoneAnimation("rune",
+	new Transformation(Transformation.Targets.ROTATE,
+		new Keyframe(0f, AnimationHelper.createRotationalVector(0f, 0f, 0f),
+			Transformation.Interpolations.LINEAR),
+		new Keyframe(0.5f, AnimationHelper.createRotationalVector(0f, 0f, 0f),
+			Transformation.Interpolations.LINEAR),
+		new Keyframe(2f, AnimationHelper.createRotationalVector(0f, 1080f, 0f),
+			Transformation.Interpolations.LINEAR)))
+.addBoneAnimation("rune",
+	new Transformation(Transformation.Targets.SCALE,
+		new Keyframe(0f, AnimationHelper.createScalingVector(0f, 0f, 0f),
+			Transformation.Interpolations.LINEAR),
+		new Keyframe(2f, AnimationHelper.createScalingVector(1f, 1f, 1f),
+			Transformation.Interpolations.LINEAR)))
+.addBoneAnimation("spike",
+	new Transformation(Transformation.Targets.SCALE,
+		new Keyframe(0f, AnimationHelper.createScalingVector(0f, 0f, 0f),
+			Transformation.Interpolations.LINEAR),
+		new Keyframe(0.5f, AnimationHelper.createScalingVector(0f, 0f, 0f),
+			Transformation.Interpolations.LINEAR),
+		new Keyframe(1.25f, AnimationHelper.createScalingVector(0.5f, 0.5f, 0.5f),
+			Transformation.Interpolations.LINEAR),
+		new Keyframe(2f, AnimationHelper.createScalingVector(1f, 1f, 1f),
+			Transformation.Interpolations.LINEAR))).build();

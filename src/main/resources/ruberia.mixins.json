@@ -8,6 +8,7 @@
 	"client": [
 		"ItemRendererAccessor",
 		"GameRendererAccessor",
+		"LivingEntityMixin",
 		"ItemRendererMixin",
 		"ModelLoaderMixin",
 		"ModEntityDataSaverMixin"

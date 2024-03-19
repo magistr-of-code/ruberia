@@ -1,17 +1,30 @@
 {
   "item.ruberia.flarium_ingot": "Flarium Ingot",
   "item.ruberia.amethyst_staff": "Amethyst Staff",
+  "item.ruberia.coal_coke": "Coal Coke",
+  "item.ruberia.flarium_necklace": "Flarium Necklace",
+  "item.ruberia.barrier_necklace": "Barrier Necklace",
   "item.ruberia.barrier_crystal": "Barrier Crystal",
+  "item.ruberia.spell_book": "Spell Book",
 
   "block.ruberia.flarium_block": "Block of Flarium",
   "block.ruberia.rune_block": "Rune",
   "block.ruberia.purple_crystal": "Purple Crystal",
   "block.ruberia.barrier_generator": "Barrier Generator",
+  "block.ruberia.writing_desk": "Writing Desk",
+  "block.ruberia.writing_table": "Writing Desk",
 
   "itemgroup.flarium": "Flarium",
   "itemgroup.magic": "Magic",
 
   "effect.ruberia.ghost": "Ghost",
 
-  "tooltip.ruberia.amethyst_staff": "A magical staff crafted from a mystical wood, with a magical crystal at the tip, grants the ability to manipulate the world’s elements."
+  "tooltip.ruberia.amethyst_staff": "A magical staff crafted from a mystical wood, with a magical crystal at the tip, grants the ability to manipulate the world’s elements.",
+
+  "key.ruberia.activate_artifacts": "Activate Artifacts",
+
+  "category.ruberia.abilities": "Abilities",
+
+  "enchantment.ruberia.fire_strike": "Fire Strike",
+  "enchantment.ruberia.dash": "Dash"
 }

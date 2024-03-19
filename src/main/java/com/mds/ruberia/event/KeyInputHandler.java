@@ -1,54 +1,42 @@
 package com.mds.ruberia.event;
 
-import com.mds.ruberia.mixin.GameRendererAccessor;
+import com.mds.ruberia.effects.ModEffects;
+import com.mds.ruberia.enchantment.ModEnchantments;
 import com.mds.ruberia.networking.ModMessages;
-import com.mds.ruberia.util.IShaderHelper;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gl.PostEffectProcessor;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.util.Identifier;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;
-
-import java.io.IOException;
-import java.util.Objects;
 
 public class KeyInputHandler {
 
     public static KeyBinding activate_necklace_keybinding;
-    public static KeyBinding test_keybinding;
 
     public static void registerKeyInputs(){
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (activate_necklace_keybinding.wasPressed()) {
                 ClientPlayNetworking.send(ModMessages.ARTIFACT_ID, PacketByteBufs.create());
-            }
-        });
+                ClientPlayerEntity player = client.player;
+                if (player != null) {
+                    int level = EnchantmentHelper.getEquipmentLevel(ModEnchantments.DASH, player);
+                    if (level >= 1&&!player.getItemCooldownManager().isCoolingDown(player.getInventory().getArmorStack(0).getItem())){
+                        player.getItemCooldownManager().set(player.getInventory().getArmorStack(0).getItem(),120*level);
+                        Vec3d raycastPos = player.raycast(10,2.0f,false).getPos();
 
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (test_keybinding.wasPressed()) {
-                try {
-                    Identifier identifier = new Identifier("shaders/post/invert.json");
-                    PostEffectProcessor effect = new PostEffectProcessor(
-                            MinecraftClient.getInstance().getTextureManager(),
-                            MinecraftClient.getInstance().getResourceManager(),
-                            MinecraftClient.getInstance().getFramebuffer(),
-                            identifier
-                    );
+                        double velX = (raycastPos.getX()-player.getX())/21*level;
+                        double velY = (raycastPos.getY()-player.getY())/21*level;
+                        double velZ = (raycastPos.getZ()-player.getZ())/21*level;
 
-                    if (!Objects.equals(MinecraftClient.getInstance().gameRenderer.getPostProcessor(), effect)) {
-                        IShaderHelper.loadShader(identifier, MinecraftClient.getInstance());
-                    } else {
-                        GameRendererAccessor gameRenderer = ((GameRendererAccessor) MinecraftClient.getInstance().gameRenderer);
-                        gameRenderer.setSuperSecretSettingIndex(gameRenderer.getSUPER_SECRET_SETTING_COUNT());
-                        gameRenderer.setPostProcessorEnabled(false);
+                        player.addVelocity(velX,velY,velZ);
+                        ModEffects.Path(player,player.getWorld(),player.getPos(), ParticleTypes.CAMPFIRE_COSY_SMOKE,1,10,1);
                     }
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
                 }
             }
         });
@@ -60,13 +48,6 @@ public class KeyInputHandler {
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_N,
                 "category.ruberia.abilities"
-        ));
-
-        test_keybinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.ruberia.test_necklace",
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_Y,
-                "category.ruberia.test"
         ));
 
          registerKeyInputs();
