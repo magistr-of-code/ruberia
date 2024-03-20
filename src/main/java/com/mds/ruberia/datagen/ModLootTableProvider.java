@@ -25,6 +25,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         addDrop(ModBlocks.FLARIUM_BLOCK);
         addDrop(ModBlocks.RUNE_BLOCK);
+        addDrop(ModBlocks.WRITING_DESK);
 
         addDrop(ModBlocks.PURPLE_CRYSTAL, copperLikeOreDrops(ModBlocks.PURPLE_CRYSTAL, Items.AMETHYST_SHARD));
 

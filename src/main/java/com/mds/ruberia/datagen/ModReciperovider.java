@@ -24,11 +24,12 @@ public class ModReciperovider extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
-        offerSmelting(exporter,COAL_COKE_SMELTABLES, RecipeCategory.MISC, ModItems.COAL_COKE,0.7f,200,"ingredients");
-        offerBlasting(exporter,COAL_COKE_SMELTABLES, RecipeCategory.MISC, ModItems.COAL_COKE,0.7f,200,"ingredients");
+        offerSmelting(exporter,COAL_COKE_SMELTABLES, RecipeCategory.MISC, ModItems.COAL_COKE,0.3f,200,"ingredients");
+        offerBlasting(exporter,COAL_COKE_SMELTABLES, RecipeCategory.MISC, ModItems.COAL_COKE,0.3f,200,"ingredients");
+        offerBlasting(exporter, List.of(Items.IRON_INGOT), RecipeCategory.MISC, ModItems.FLARIUM_INGOT,0.3f,400,"ingredients");
 
         offerReversibleCompactingRecipes(exporter,RecipeCategory.BUILDING_BLOCKS,ModItems.FLARIUM_INGOT,RecipeCategory.DECORATIONS, ModBlocks.FLARIUM_BLOCK);
-        offerCompactingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS,ModItems.BARRIER_CRYSTAL,ModBlocks.BARRIER_GENERATOR);
+        offerCompactingRecipe(exporter,RecipeCategory.BUILDING_BLOCKS,ModBlocks.BARRIER_GENERATOR,ModItems.BARRIER_CRYSTAL);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,ModItems.AMETHYST_STAFF,1)
                 .pattern("  $")
@@ -49,5 +50,41 @@ public class ModReciperovider extends FabricRecipeProvider {
                 .input('C', ModItems.BARRIER_CRYSTAL)
                 .criterion(hasItem(ModItems.BARRIER_CRYSTAL),conditionsFromItem(ModItems.BARRIER_CRYSTAL))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.BARRIER_NECKLACE)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,ModItems.FLARIUM_NECKLACE,1)
+                .pattern(" S ")
+                .pattern("S S")
+                .pattern(" C ")
+                .input('S', Items.STRING)
+                .input('C', ModItems.FLARIUM_INGOT)
+                .criterion(hasItem(ModItems.FLARIUM_NECKLACE),conditionsFromItem(ModItems.FLARIUM_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.FLARIUM_NECKLACE)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,ModItems.SPELL_BOOK,1)
+                .pattern(" S ")
+                .pattern("SCS")
+                .pattern(" S ")
+                .input('S', ModItems.BARRIER_CRYSTAL)
+                .input('C', Items.BOOK)
+                .criterion(hasItem(ModItems.BARRIER_CRYSTAL),conditionsFromItem(ModItems.BARRIER_CRYSTAL))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SPELL_BOOK)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,ModBlocks.WRITING_DESK.asItem(),1)
+                .pattern("  C")
+                .pattern("SSS")
+                .pattern("S S")
+                .input('S', Items.SPRUCE_PLANKS)
+                .input('C', Items.GLASS_BOTTLE)
+                .criterion(hasItem(Items.SPRUCE_PLANKS),conditionsFromItem(Items.SPRUCE_PLANKS))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.WRITING_DESK.asItem())));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,ModItems.BARRIER_CRYSTAL,1)
+                .pattern(" S ")
+                .pattern("SCS")
+                .pattern(" S ")
+                .input('S', Items.QUARTZ)
+                .input('C', Items.AMETHYST_SHARD)
+                .criterion(hasItem(Items.AMETHYST_SHARD),conditionsFromItem(Items.AMETHYST_SHARD))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.BARRIER_CRYSTAL)));
     }
 }

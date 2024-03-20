@@ -147,10 +147,10 @@ public class WritingTableBlockEntity extends BlockEntity implements ExtendedScre
             nbtData.putInt("mana",mana+30);
         }
 
-        System.out.println(spell + " is active");
+        active_spells+=1;
 
+        nbtData.putInt("active_spells",active_spells);
         nbtData.putString("active_spell_"+active_spells,spell);
-        nbtData.putInt("active_spells",active_spells+1);
 
         this.setStack(INPUT_OUTPUT_SLOT,inputStack);
         this.removeStack(MATERIAL_SLOT,1);

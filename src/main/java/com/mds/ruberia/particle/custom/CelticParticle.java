@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.render.Camera;
+import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
@@ -81,6 +82,12 @@ public class CelticParticle extends SpriteBillboardParticle {
 
     private void fadeOut() {
         this.alpha = (-(1/(float)maxAge) * age + 1);
+    }
+
+
+    @Override
+    protected int getBrightness(float tint) {
+        return LightmapTextureManager.MAX_LIGHT_COORDINATE;
     }
 
     @Override

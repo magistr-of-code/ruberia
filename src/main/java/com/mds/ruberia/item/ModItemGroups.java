@@ -11,7 +11,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
-    static ItemStack powerWordKillSpellBook = ModItems.SPELL_BOOK.getDefaultStack();
+    static ItemStack powerWordDeathSpellBook = ModItems.SPELL_BOOK.getDefaultStack();
+    static ItemStack urdzamBook = ModItems.SPELL_BOOK.getDefaultStack();
 
     public static final ItemGroup FLARIUM_GROUP = Registry.register(Registries.ITEM_GROUP,
             new Identifier(Ruberia.MOD_ID,"flarium"),
@@ -34,10 +35,14 @@ public class ModItemGroups {
                         entries.add(ModItems.BARRIER_NECKLACE);
                         entries.add(ModBlocks.WRITING_DESK);
                         entries.add(ModItems.SPELL_BOOK);
-                        powerWordKillSpellBook.getOrCreateNbt().putString("active_spell_1","power_word_kill");
-                        powerWordKillSpellBook.getOrCreateNbt().putInt("active_spells",1);
-                        powerWordKillSpellBook.getOrCreateNbt().putInt("mana",180);
-                        entries.add(powerWordKillSpellBook);
+                        powerWordDeathSpellBook.getOrCreateNbt().putInt("active_spells",1);
+                        powerWordDeathSpellBook.getOrCreateNbt().putString("active_spell_1","power_word_death");
+                        powerWordDeathSpellBook.getOrCreateNbt().putInt("mana",500);
+                        entries.add(powerWordDeathSpellBook);
+                        urdzamBook.getOrCreateNbt().putInt("active_spells",1);
+                        urdzamBook.getOrCreateNbt().putString("active_spell_1","urdzam");
+                        urdzamBook.getOrCreateNbt().putInt("mana",240);
+                        entries.add(urdzamBook);
                     }).build());
 
     public static void registerItemGroups(){

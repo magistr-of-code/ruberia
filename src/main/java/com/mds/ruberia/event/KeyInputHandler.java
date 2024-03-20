@@ -2,7 +2,10 @@ package com.mds.ruberia.event;
 
 import com.mds.ruberia.effects.ModEffects;
 import com.mds.ruberia.enchantment.ModEnchantments;
+import com.mds.ruberia.item.ModItems;
 import com.mds.ruberia.networking.ModMessages;
+import dev.emi.trinkets.api.TrinketComponent;
+import dev.emi.trinkets.api.TrinketsApi;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
@@ -11,9 +14,14 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.Vec3d;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.List;
+import java.util.Optional;
 
 public class KeyInputHandler {
 
@@ -25,6 +33,21 @@ public class KeyInputHandler {
                 ClientPlayNetworking.send(ModMessages.ARTIFACT_ID, PacketByteBufs.create());
                 ClientPlayerEntity player = client.player;
                 if (player != null) {
+
+                    Optional<TrinketComponent> trinketComponent = TrinketsApi.getTrinketComponent(player);
+                    for(int i = 0; i != trinketComponent.get().getAllEquipped().size();i++) {
+
+                        Item item = trinketComponent.get().getAllEquipped().get(i).getRight().getItem();
+
+                        if(item == ModItems.BARRIER_NECKLACE && player.getInventory().contains(ModItems.BARRIER_CRYSTAL.getDefaultStack())){
+
+                            ItemStack stack = player.getInventory().getStack(player.getInventory().indexOf(ModItems.BARRIER_CRYSTAL.getDefaultStack()));
+                            stack.decrement(1);
+
+                            ModEffects.ShockWave(player.getWorld(),player.getPos(),4, List.of(player));
+                        }
+                    }
+
                     int level = EnchantmentHelper.getEquipmentLevel(ModEnchantments.DASH, player);
                     if (level >= 1&&!player.getItemCooldownManager().isCoolingDown(player.getInventory().getArmorStack(0).getItem())){
                         player.getItemCooldownManager().set(player.getInventory().getArmorStack(0).getItem(),120*level);

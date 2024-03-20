@@ -1,4 +1,4 @@
-package com.mds.ruberia.item.custom;
+package com.mds.ruberia.item.custom.artifacts;
 
 import com.google.common.collect.Multimap;
 import dev.emi.trinkets.api.SlotReference;

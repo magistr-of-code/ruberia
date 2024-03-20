@@ -9,6 +9,8 @@ import net.minecraft.util.Identifier;
 
 public class ModParticles {
     public static final DefaultParticleType CELTIC_PARTICLE = register("celtic_particle");
+    public static final DefaultParticleType LIGHTNING_PARTICLE = register("lightning_particle");
+    public static final DefaultParticleType PURPLE_LIGHTNING_PARTICLE = register("purple_lightning_particle");
 
     private static DefaultParticleType register(String name) {
         return Registry.register(Registries.PARTICLE_TYPE, new Identifier(Ruberia.MOD_ID,name), FabricParticleTypes.simple());

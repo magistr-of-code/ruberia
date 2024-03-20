@@ -14,6 +14,6 @@ public class ModScreenHandlers {
                     new ExtendedScreenHandlerType<>(WritingTableScreenHandler::new));
 
     public static void registerScreenHandlers(){
-        Ruberia.LOGGER.info("registering screen handlers for " + Ruberia.MOD_ID);
+        Ruberia.LOGGER.info("Registering Screen Handlers for " + Ruberia.MOD_ID);
     }
 }

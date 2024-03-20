@@ -1,10 +1,10 @@
 package com.mds.ruberia.item;
 
 import com.mds.ruberia.Ruberia;
-import com.mds.ruberia.item.custom.AmethystStaffItem;
-import com.mds.ruberia.item.custom.BarrierNecklace;
-import com.mds.ruberia.item.custom.FlariumNecklace;
-import com.mds.ruberia.item.custom.SpellBook;
+import com.mds.ruberia.item.custom.spell_casting_items.AmethystStaffItem;
+import com.mds.ruberia.item.custom.artifacts.BarrierNecklace;
+import com.mds.ruberia.item.custom.artifacts.FlariumNecklace;
+import com.mds.ruberia.item.custom.spell_casting_items.SpellBook;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;

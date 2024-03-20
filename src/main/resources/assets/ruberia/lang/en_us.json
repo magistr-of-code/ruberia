@@ -25,6 +25,14 @@
 
   "category.ruberia.abilities": "Abilities",
 
-  "enchantment.ruberia.fire_strike": "Fire Strike",
-  "enchantment.ruberia.dash": "Dash"
+  "enchantment.ruberia.lightning_strike": "Lightning Strike",
+  "enchantment.ruberia.dash": "Dash",
+
+  "spell.ruberia.power_word_death": "Power Word Death",
+  "spell.ruberia.crystal_spear": "Crystal Spear",
+  "spell.ruberia.shockwave": "Shockwave",
+  "spell.ruberia.shield": "Shield",
+  "spell.ruberia.crystal": "Crystal",
+  "spell.ruberia.teleport": "Teleport",
+  "spell.ruberia.urdzam": "Urdzam"
 }

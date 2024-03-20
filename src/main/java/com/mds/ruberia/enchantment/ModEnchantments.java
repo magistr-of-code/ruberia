@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 
 public class ModEnchantments {
 
-    public static Enchantment FIRE_STRIKE = register("fire_strike",
+    public static Enchantment FIRE_STRIKE = register("lightning_strike",
             new LightingStrikeEnchantment(Enchantment.Rarity.VERY_RARE));
     public static Enchantment DASH = register("dash",
             new DashEnchantment(Enchantment.Rarity.VERY_RARE));

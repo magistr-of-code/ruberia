@@ -3,12 +3,9 @@ package com.mds.ruberia.networking.packet;
 import com.mds.ruberia.effects.ModEffects;
 import com.mds.ruberia.enchantment.ModEnchantments;
 import com.mds.ruberia.item.ModItems;
-import com.mds.ruberia.networking.ModMessages;
 import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -31,12 +28,9 @@ public class ArtifactsC2SPacket {
             Item item = trinketComponent.get().getAllEquipped().get(i).getRight().getItem();
 
             if(item == ModItems.BARRIER_NECKLACE && player.getInventory().contains(ModItems.BARRIER_CRYSTAL.getDefaultStack())){
-
                 ItemStack stack = player.getInventory().getStack(player.getInventory().indexOf(ModItems.BARRIER_CRYSTAL.getDefaultStack()));
                 stack.decrement(1);
-
-                ModEffects.ShockWave(player.getWorld(),player.getPos(),8, List.of(player));
-                ServerPlayNetworking.send(player, ModMessages.ARTIFACT_CLIENT_ID, PacketByteBufs.create().writeString("barrier_necklace_success"));
+                ModEffects.ShockWave(player.getWorld(),player.getPos(),4, List.of(player));
             }
         }
 
